@@ -17,8 +17,10 @@ from sklearn.utils.class_weight import compute_sample_weight
 import torch.nn.functional as F
 os.environ['CUDA_LAUNCH_BLOCKING'] = '0'
 time_now = datetime.now().strftime('%Y_%m_%d#%H_%M_%S')
-output_path = os.path.join('output', time_now)
-output_file = open(output_path, 'w')
+output_path = os.path.join("output", time_now)
+os.makedirs(output_path, exist_ok=True)  # 创建目录
+output_file_path = os.path.join(output_path, "log.txt")
+output_file = open(output_file_path, "w")
 # 训练时的超参数
 params = {
     'max_seq_len': max_seq_len,
