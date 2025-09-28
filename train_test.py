@@ -112,9 +112,9 @@ for epoch in range(params['epochs']):
             test_loader = DataLoader(test_set, batch_size=batch_size)
         else:
             train_loader = DataLoader(train_set, batch_size=batch_size, num_workers=params['num_workers'],
-                                      pin_memory=True, prefetch_factor=params['prefetch_factor'])
+                                      pin_memory=True)
             test_loader = DataLoader(test_set, batch_size=batch_size, num_workers=params['num_workers'],
-                                     pin_memory=True, prefetch_factor=params['prefetch_factor'])
+                                     pin_memory=True)
         train_data_len, test_data_len = len(train_set), len(test_set)
         print('===================' + LOG_Y + f'epoch: {epoch_total + 1}'+ LOG_END + '====================')
 
