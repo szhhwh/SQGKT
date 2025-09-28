@@ -216,7 +216,7 @@ class sqgkt(Module):
 
         for i in range(num_nodes):
             neighbor_embs = emb_neighbor[i]  # [neighbor_size, embedding_dim]
-            node_weights = self.uq_table[i, :neighbor_embs.size(0), :]  # [neighbor_size, 3]
+            node_weights = self.uq_table[:neighbor_embs.size(0), :]  # [neighbor_size, 3]
 
          
             c_i = node_weights[:, 0].unsqueeze(-1)  # [neighbor_size, 1]
