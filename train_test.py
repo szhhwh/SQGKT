@@ -49,7 +49,7 @@ print(params)
 batch_size = params['batch_size']
 
 qs_table = torch.tensor(sparse.load_npz('data/qs_table.npz').toarray(), dtype=torch.int64, device=DEVICE)
-uq_table = torch.tensor(sparse.load_npz('data/uq_table.npz').toarray(), dtype=torch.int64, device=DEVICE)
+uq_table = torch.tensor(np.load('data/uq_table.npy'), dtype=torch.float32, device=DEVICE)
 
 num_question = torch.tensor(qs_table.shape[0], device=DEVICE)
 num_skill = torch.tensor(qs_table.shape[1], device=DEVICE)
