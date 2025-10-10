@@ -8,3 +8,12 @@ __pycache__/
 
 # Cache
 output/
+
+# Data
+data/
+*.npy
+*.npz
+*.csv
+
+# PyTorch
+*.pt
