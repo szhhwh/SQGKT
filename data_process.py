@@ -169,7 +169,7 @@ if not os.path.exists('data/uq_table.npy'):
         uq_table[user_index, question_index, 1] = attempt_factor_g
         uq_table[user_index, question_index, 2] = hint_factor_g
 
-        np.save('data/uq_table.npy', uq_table)
+    np.save('data/uq_table.npy', uq_table)
 else:
     uq_table = np.load('data/uq_table.npy')
 
