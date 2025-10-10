@@ -225,6 +225,6 @@ for epoch in range(params['epochs']):
     y_label_aver[0][epoch], y_label_aver[1][epoch], y_label_aver[2][epoch] = test_loss_aver, test_acc_aver, test_auc_aver
 
 output_file.close()
-torch.save(model, f=f'model/{time_now}.pt')
+torch.save(model.state_dict(), f=f'model/{time_now}.pt')
 np.savetxt(f'chart_data/{time_now}_all.txt', y_label_all)
 np.savetxt(f'chart_data/{time_now}_aver.txt', y_label_aver)
