@@ -2,9 +2,7 @@ import torch
 
 
 DEVICE = torch.device(
-    "xpu"
-    if hasattr(torch, "xpu") and torch.xpu.is_available()
-    else "cuda" if torch.cuda.is_available() else "cpu"
+    "cuda" if torch.cuda.is_available() else "cpu"
 )
 
 LOG_B = "\033[1;34m"
