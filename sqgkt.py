@@ -130,7 +130,8 @@ class sqgkt(Module):
 
            
             lstm_input = torch.cat((emb_hat_q, emb_response_t), dim=1)  
-            lstm_output = self.dropout_lstm(self.lstm_cell(lstm_input)[0])  
+            h1_pre, h2_pre = self.lstm_cell(lstm_input, (h1_pre, h2_pre))
+            lstm_output = self.dropout_lstm(h1_pre)
 
        
             q_next = question[:, t + 1]
