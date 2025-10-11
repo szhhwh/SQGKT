@@ -145,8 +145,7 @@ for epoch in range(params['epochs']):
 
             auc = roc_auc_score(y_target.cpu(), y_pred.cpu())
             train_auc += auc * len(x) / train_data_len
-            # loss.backward()
-            loss.backward(retain_graph=True)
+            loss.backward()
             optimizer.step()
             train_step += 1
             print(f'step: {train_step}, loss: {loss.item():.4f}, acc: {acc.item():.4f}, auc: {auc:.4f}')
