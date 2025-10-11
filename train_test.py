@@ -78,7 +78,7 @@ model = sqgkt(
 
 
 
-loss_fun = torch.nn.BCEWithLogitsLoss().to(DEVICE) # 损失函数
+loss_fun = torch.nn.BCELoss().to(DEVICE) # 损失函数
 
 
 dataset = UserDataset()
