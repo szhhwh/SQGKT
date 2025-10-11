@@ -2,7 +2,6 @@ import numpy as np
 from scipy import sparse
 
 def build_adj_list():
-
     qs_table = sparse.load_npz('data/qs_table.npz').toarray()
     num_question = qs_table.shape[0]
     num_skill = qs_table.shape[1]
