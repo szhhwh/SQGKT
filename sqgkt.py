@@ -250,12 +250,12 @@ class sqgkt(Module):
                 emb_node_neighbor[j] = self.sum_aggregate(
                     emb_node_neighbor[j], emb_node_neighbor[j + 1], j
                 )
-        return torch.tanh(self.MLP_AGG_last(emb_node_neighbor[0]))
+        return torch.relu(self.MLP_AGG_last(emb_node_neighbor[0]))
 
     def sum_aggregate(self, emb_self, emb_neighbor, hop):
         emb_sum_neighbor = torch.mean(emb_neighbor, dim=-2)
         emb_sum = emb_sum_neighbor + emb_self
-        return torch.tanh(self.dropout_gnn(self.mlps4agg[hop](emb_sum)))
+        return torch.relu(self.dropout_gnn(self.mlps4agg[hop](emb_sum)))
 
     def aggregate_uq(self, emb_node_neighbor, id_node_neighbor):
         for i in range(self.agg_hops):
@@ -272,7 +272,7 @@ class sqgkt(Module):
                     emb_node_neighbor[j] = self.sum_aggregate(
                         emb_node_neighbor[j], emb_node_neighbor[j + 1], j
                     )
-        return torch.tanh(self.MLP_AGG_last(emb_node_neighbor[0]))
+        return torch.relu(self.MLP_AGG_last(emb_node_neighbor[0]))
 
     def sum_aggregate_uq(self, emb_self, emb_neighbor, hop, self_ids, neighbor_ids):
         """
@@ -325,7 +325,7 @@ class sqgkt(Module):
         emb_sum = emb_self + weighted_emb_neighbor_sum
 
         # 应用MLP和激活函数
-        return torch.tanh(self.dropout_gnn(self.mlps4agg[hop](emb_sum)))
+        return torch.relu(self.dropout_gnn(self.mlps4agg[hop](emb_sum)))
 
     def recap_hard(self, q_next, q_history):
         batch_size = q_next.shape[0]
